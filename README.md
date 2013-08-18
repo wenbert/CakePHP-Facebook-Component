@@ -3,15 +3,16 @@ CakePHP-Facebook-Component
 
 Make sure you have the facebook php sdk files (https://github.com/facebook/facebook-php-sdk)
 
-./vendors/facebook
-./vendors/facebook/base_facebook.php
-./vendors/facebook/facebook.php
-./vendors/facebook/fb_ca_chain_bundle.crt
+    ./vendors/facebook
+    ./vendors/facebook/base_facebook.php
+    ./vendors/facebook/facebook.php
+    ./vendors/facebook/fb_ca_chain_bundle.crt
 
 USAGE
 =====
 
 Put this file in: 
+
     app/Controller/Component/FacebookComponent.php
 
 Set it up like this:
