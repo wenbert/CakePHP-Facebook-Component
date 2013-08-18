@@ -68,6 +68,8 @@ class FacebookComponent extends Component {
             );
         }
 
+        $controller->facebook = $this->facebook;
+        $controller->user = $this->facebook->getUser();
         $controller->userProfile = $this->userProfile;
         $controller->loginUrl = $this->loginUrl;
         $controller->logoutUrl = $this->logoutUrl;

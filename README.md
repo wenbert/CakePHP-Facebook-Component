@@ -33,6 +33,9 @@ Set it up like this:
 
 Then in you controllers, you can do this:
 
+    debug($this->facebook);
+    debug($this->facebook->getAccessToken());
+    debug($this->user);
     debug($this->userProfile);
     debug($this->loginUrl);
     debug($this->logoutUrl);
