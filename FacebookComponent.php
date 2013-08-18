@@ -71,9 +71,11 @@ class FacebookComponent extends Component {
         $controller->userProfile = $this->userProfile;
         $controller->loginUrl = $this->loginUrl;
         $controller->logoutUrl = $this->logoutUrl;
+        $controller->insideFacebook = false;
         if(isset($_REQUEST['signed_request'])) {
             $controller->hasLiked = $this->_hasLiked($_REQUEST['signed_request']);
             $controller->signed_request = $_REQUEST['signed_request'];
+            $controller->insideFacebook = true;
         } else {
             $controller->hasLiked = false;
             $controller->signed_request = null;
@@ -103,6 +105,14 @@ class FacebookComponent extends Component {
         // debug($signed_request);
         
         if($signed_request->page->liked) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function _isInsideFacebook($signed_request = null) {
+        if($signed_request) {
             return true;
         } else {
             return false;

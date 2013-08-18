@@ -37,4 +37,5 @@ Then in you controllers, you can do this:
     debug($this->loginUrl);
     debug($this->logoutUrl);
     debug($this->hasLiked);
+    debug($this->insideFacebook);
     debug($this->signed_request);
