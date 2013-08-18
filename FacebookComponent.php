@@ -2,44 +2,8 @@
 App::uses('Component', 'Controller');
 App::import('Vendor', 'facebook', array('file' => 'facebook/facebook.php'));
 
-/**
- * Make sure you have the facebook php sdk files (https://github.com/facebook/facebook-php-sdk)
- * ./vendors/facebook
- * ./vendors/facebook/base_facebook.php
- * ./vendors/facebook/facebook.php
- * ./vendors/facebook/fb_ca_chain_bundle.crt
- *
- * USAGE
- *
- * Put this file in: app/Controller/Component/FacebookComponent.php
- *
- * Set it up like this:
- *
- *    public $components = array(
- *       'Facebook' => array(
- *           'appId' => 'xxx',
- *           'secret' => 'xxx',
- *           'cookie' => true,
- *           'fileUpload' => 1,
- *           'canvas' => 1,
- *           'fbconnect' => 1,
- *           'display' => 'page',
- *           'scope' => 'user_about_me,email,publish_actions,publish_stream,photo_upload',
- *           'redirect_uri' => 'https://www.facebook.com/pages/My-Test-Page/12345?id=12345&sk=app_12345'
- *      )
- *   );
- *
- * Then in you controllers, you can do this:
- *
- * debug($this->userProfile);
- * debug($this->loginUrl);
- * debug($this->logoutUrl);
- * debug($this->hasLiked);
- *
- */
-
+//https://github.com/wenbert/CakePHP-Facebook-Component
 class FacebookComponent extends Component {
-    // private $Controller;
     private $facebook;
     private $userProfile;
     private $user;
@@ -107,7 +71,13 @@ class FacebookComponent extends Component {
         $controller->userProfile = $this->userProfile;
         $controller->loginUrl = $this->loginUrl;
         $controller->logoutUrl = $this->logoutUrl;
-        $controller->hasLiked = $this->_hasLiked($_REQUEST['signed_request']);
+        if(isset($_REQUEST['signed_request'])) {
+            $controller->hasLiked = $this->_hasLiked($_REQUEST['signed_request']);
+            $controller->signed_request = $_REQUEST['signed_request'];
+        } else {
+            $controller->hasLiked = false;
+            $controller->signed_request = null;
+        }
     }
 
 
